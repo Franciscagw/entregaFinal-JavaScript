@@ -86,4 +86,4 @@ const eliminarProducto = (id) => {
     carrito = carrito.filter ((data)=>data.id !== id);
     localStorage.setItem ("carrito", JSON.stringify(carrito));
     recorridoCarrito ();
-}
+};
