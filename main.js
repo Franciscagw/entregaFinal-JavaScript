@@ -1,7 +1,8 @@
-
+let myData
 fetch("./setting.json")
 .then ((response)=>response.json())
 .then ((data)=>{
+    myData = data;
     const recorridoProductos = ()=>{
         data.forEach((producto)=>{
             const card = document.createElement ("div");
