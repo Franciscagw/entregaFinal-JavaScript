@@ -43,17 +43,19 @@ const carritoContainer = document.getElementById ("carrito");
 //recorrer el carrito con los itemes agregados y mostrarlo
 const recorridoCarrito = () =>{
     carritoContainer.innerHTML="";
+    const ul = document.createElement("ul");
     carrito.forEach (item =>{
-        const carritoFinal = document.createElement("ul");
-        carritoFinal.innerHTML = ` 
+        ul.innerHTML = ` 
         <li>${item.nombre},cantidad: ${item.cantidad}, precio: ${item.precio * item.cantidad}</li>
         <button id="vaciar-${item.id}">Eliminar producto</button>
         `;
+        carritoContainer.append(ul);
+        
         const deleteButton = document.getElementById (`vaciar-${item.id}`);
         deleteButton.addEventListener("click", ()=>{
              eliminarProducto();
         })
-        carritoHtml.append(carritoFinal);
+        
     })
 }
 
@@ -77,10 +79,10 @@ agregarAlCarrito ();
 //funcion de eliminar prodcuto
 const deleteCarrito = (productoId) => {
     const item = myData.find((myData)=>myData.id === productoId);
-    if (data.cantidad === 1){
+    if (myData.cantidad === 1){
         eliminarProducto (myData.id);
     } else {
-        producto.cantidad--;
+        myData.cantidad--;
         localStorage.setItem("carrito", JSON.stringify(carrito))
     }
     recorridoCarrito();
@@ -90,3 +92,4 @@ const eliminarProducto = (id) => {
     localStorage.setItem ("carrito", JSON.stringify(carrito));
     recorridoCarrito ();
 };
+
