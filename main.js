@@ -58,7 +58,7 @@ const recorridoCarrito = () =>{
 }
 //agregar al carrito o iniciar item si es que no esta
 const agregarAlCarrito = (productoId) =>{
-    const item = data.find((data)=>data.id === productoId);
+    const item = data.find((myData)=>myData.id === productoId);
     const productoEnCarrito = carrito.some((item)=> item.id===productoId);
     console.log(productoEnCarrito);
 
@@ -73,18 +73,18 @@ const agregarAlCarrito = (productoId) =>{
 }
 
 //funcion de eliminar prodcuto
-/*const deleteCarrito = (productoId) => {
-    const item = data.find((data)=>data.id === productoId);
+const deleteCarrito = (productoId) => {
+    const item = myData.find((myData)=>myData.id === productoId);
     if (data.cantidad === 1){
-        eliminarProducto (data.id);
+        eliminarProducto (myData.id);
     } else {
         producto.cantidad--;
         localStorage.setItem("carrito", JSON.stringify(carrito))
     }
     recorridoCarrito();
-}*/
+}
 const eliminarProducto = (id) => {
-    carrito = carrito.filter ((data)=>data.id !== id);
+    carrito = carrito.filter ((myData)=>myData.id !== id);
     localStorage.setItem ("carrito", JSON.stringify(carrito));
     recorridoCarrito ();
 };
