@@ -1,4 +1,4 @@
-let myData
+let myData = [];
 fetch("./setting.json")
 .then ((response)=>response.json())
 .then ((data)=>{
@@ -30,15 +30,15 @@ fetch("./setting.json")
         })
     }
     recorridoProductos();
+
 })
 
 
-const bagsContainer = document.getElementById("bagsContainer")
+const bagsContainer = document.getElementById ("bagsContainer");
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 const carritoContainer = document.getElementById ("carrito");
-
 
 //recorrer el carrito con los itemes agregados y mostrarlo
 const recorridoCarrito = () =>{
@@ -49,17 +49,18 @@ const recorridoCarrito = () =>{
         <li>${item.nombre},cantidad: ${item.cantidad}, precio: ${item.precio * item.cantidad}</li>
         <button id="vaciar-${item.id}">Eliminar producto</button>
         `;
+
         carritoContainer.append(ul);
-        
+
         const deleteButton = document.getElementById (`vaciar-${item.id}`);
         deleteButton.addEventListener("click", ()=>{
-             eliminarProducto();
+         eliminarProducto();
         })
-        
     })
 }
 
 //agregar al carrito o iniciar item si es que no esta
+
 const agregarAlCarrito = (productoId) =>{
     const item = myData.find((myData)=>myData.id === productoId);
     const productoEnCarrito = carrito.some((item)=> item.id===productoId);
@@ -79,6 +80,7 @@ agregarAlCarrito ();
 //funcion de eliminar prodcuto
 const deleteCarrito = (productoId) => {
     const item = myData.find((myData)=>myData.id === productoId);
+
     if (myData.cantidad === 1){
         eliminarProducto (myData.id);
     } else {
@@ -87,9 +89,9 @@ const deleteCarrito = (productoId) => {
     }
     recorridoCarrito();
 }
+
 const eliminarProducto = (id) => {
     carrito = carrito.filter ((myData)=>myData.id !== id);
-    localStorage.setItem ("carrito", JSON.stringify(carrito));
+    localStorage.setItem ("carrito", JSON.stringify    (carrito));
     recorridoCarrito ();
 };
-
