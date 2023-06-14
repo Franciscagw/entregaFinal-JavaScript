@@ -58,7 +58,7 @@ const recorridoCarrito = () =>{
 }
 //agregar al carrito o iniciar item si es que no esta
 const agregarAlCarrito = (productoId) =>{
-    const item = data.find((myData)=>myData.id === productoId);
+    const item = myData.find((myData)=>myData.id === productoId);
     const productoEnCarrito = carrito.some((item)=> item.id===productoId);
     console.log(productoEnCarrito);
 
@@ -71,6 +71,7 @@ const agregarAlCarrito = (productoId) =>{
     localStorage.setItem("carrito",JSON.stringify(carrito));
     recorridoCarrito ();
 }
+agregarAlCarrito ();
 
 //funcion de eliminar prodcuto
 const deleteCarrito = (productoId) => {
