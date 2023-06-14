@@ -53,7 +53,7 @@ const recorridoCarrito = () =>{
         deleteButton.addEventListener("click", ()=>{
              eliminarProducto();
         })
-        carritoContainer.append(carritoFinal);
+        carritoHtml.append(carritoFinal);
     })
 }
 
