@@ -49,13 +49,14 @@ const recorridoCarrito = () =>{
         <li>${item.nombre},cantidad: ${item.cantidad}, precio: ${item.precio * item.cantidad}</li>
         <button id="vaciar-${item.id}">Eliminar producto</button>
         `;
-       const deleteButton = document.getElementById (`vaciar${item.id}`);
-       deleteButton.addEventListener("click", ()=>{
-            eliminarProducto();
+        const deleteButton = document.getElementById (`vaciar-${item.id}`);
+        deleteButton.addEventListener("click", ()=>{
+             eliminarProducto();
         })
         carritoContainer.append(carritoFinal);
     })
 }
+
 //agregar al carrito o iniciar item si es que no esta
 const agregarAlCarrito = (productoId) =>{
     const item = myData.find((myData)=>myData.id === productoId);
