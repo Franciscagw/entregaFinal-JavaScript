@@ -40,6 +40,16 @@ let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 const carritoContainer = document.getElementById ("carritoHtml");
 
+const totall = () =>{
+    const totalR = carrito.reduce ((accum,item)=>(accum + item.cantidad*item.precio));
+    carritoContainer.innerHTML;
+    const total = document.createElement("li");
+    total.innerHTML = ` 
+    <p>Total: ${totalR}</p>
+    `;
+    carritoContainer.append(totall);
+}; 
+
 //recorrer el carrito con los itemes agregados y mostrarlo
 const recorridoCarrito = () =>{
     carritoContainer.innerHTML="";
@@ -58,21 +68,9 @@ const recorridoCarrito = () =>{
          eliminarProducto(item);
         });
     });
-    const totall = () =>{
-    const totalR = carrito.reduce ((acum, products)=> acum + products, 0);
-    carritoContainer.innerHTML;
-    const total = document.createElement("li");
-    total.innerHTML = ` 
-    <p>Total: ${totalR}</p>
-    `;
-    carritoContainer.append(total);
-    totall ();
+
+   totall ()
 }
-};
-
-
-
-
 
 
 //agregar al carrito o iniciar item si es que no esta
