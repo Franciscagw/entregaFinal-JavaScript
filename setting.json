@@ -1,9 +1,15 @@
 [
     {"id":0, "nombre": "Medium Dior Ammi Bag","precio": 3500, "imagenUrl":"../media/bags/ammi-adel.avif", "imagenUrlChange": "../media/bags/ami-atras.avif"},
+
     {"id":1, "nombre": "Saddle Bag with Strap","precio": 5800, "imagenUrl":"../media/bags/bandolera-saddle.jpg.avif", "imagenUrlChange": "../media/bags/bandolera-saddle-atras.jpg.avif"},
+
     {"id":2, "nombre": "Large Dior Book Tote","precio": 3000, "imagenUrl": "../media/bags/book-tote-grande-adelante.avif","imagenUrlChange": "../media/bags/book-tote-grande-atras.avif"},
+
     {"id":3, "nombre": "CD Lounge Bag Blue Dior Oblique Jacquard","precio": 2600, "imagenUrl": "../media/bags/cd-lounge-adel.avif","imagenUrlChange": "../media/bags/cd-lounge-arri.avif"},
+
     {"id":4, "nombre": "Mini Lady Dior Bag","precio": 5100, "imagenUrl": "../media/bags/mini-lady-dior-adelant.avif","imagenUrlChange": "../media/bags/mini-lady-dior-atras.avif"},
+
     {"id":5, "nombre": "Small 30 Montaige Bag","precio": 2900, "imagenUrl": "../media/bags/montaige-adel.avif","imagenUrlChange": "../media/bags/montaige-atras.avif"},
+    
     {"id":6, "nombre": "Small Dior Key Bag","precio": 4200, "imagenUrl": "../media/bags/key-adel.avif","imagenUrlChange": "../media/bags/key-atras.avif"}
 ]

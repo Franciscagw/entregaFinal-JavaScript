@@ -38,29 +38,44 @@ const bagsContainer = document.getElementById ("bagsContainer");
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-const carritoContainer = document.getElementById ("carrito");
+const carritoContainer = document.getElementById ("carritoHtml");
 
 //recorrer el carrito con los itemes agregados y mostrarlo
 const recorridoCarrito = () =>{
     carritoContainer.innerHTML="";
-    const ul = document.createElement("ul");
+    console.log ("carrito")
     carrito.forEach (item =>{
-        ul.innerHTML = ` 
-        <li>${item.nombre},cantidad: ${item.cantidad}, precio: ${item.precio * item.cantidad}</li>
+
+        const li = document.createElement("li");
+        li.innerHTML += ` 
+        <p>${item.nombre}, cantidad: ${item.cantidad}, precio: ${item.precio * item.cantidad} USD</p>
         <button id="vaciar-${item.id}">Eliminar producto</button>
         `;
-
-        carritoContainer.append(ul);
+        carritoContainer.append(li);
 
         const deleteButton = document.getElementById (`vaciar-${item.id}`);
         deleteButton.addEventListener("click", ()=>{
-         eliminarProducto();
-        })
-    })
+         eliminarProducto(item);
+        });
+    });
+    const totall = () =>{
+    const totalR = carrito.reduce ((acum, products)=> acum + products, 0);
+    carritoContainer.innerHTML;
+    const total = document.createElement("li");
+    total.innerHTML = ` 
+    <p>Total: ${totalR}</p>
+    `;
+    carritoContainer.append(total);
+    totall ();
 }
+};
+
+
+
+
+
 
 //agregar al carrito o iniciar item si es que no esta
-
 const agregarAlCarrito = (productoId) =>{
     const item = myData.find((myData)=>myData.id === productoId);
     const productoEnCarrito = carrito.some((item)=> item.id===productoId);
@@ -75,23 +90,22 @@ const agregarAlCarrito = (productoId) =>{
     localStorage.setItem("carrito",JSON.stringify(carrito));
     recorridoCarrito ();
 }
-agregarAlCarrito ();
 
 //funcion de eliminar prodcuto
 const deleteCarrito = (productoId) => {
-    const item = myData.find((myData)=>myData.id === productoId);
+    const item = myData.find((item)=>item.id === productoId);
 
-    if (myData.cantidad === 1){
-        eliminarProducto (myData.id);
+    if (item.cantidad === 1){
+        eliminarProducto (item.id);
     } else {
-        myData.cantidad--;
+        item.cantidad--;
         localStorage.setItem("carrito", JSON.stringify(carrito))
     }
     recorridoCarrito();
 }
 
-const eliminarProducto = (id) => {
-    carrito = carrito.filter ((myData)=>myData.id !== id);
+const eliminarProducto = (item) => {
+    carrito = carrito.filter ((prod)=>prod.id !== item.id);
     localStorage.setItem ("carrito", JSON.stringify    (carrito));
     recorridoCarrito ();
 };
