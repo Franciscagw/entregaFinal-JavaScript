@@ -18,6 +18,12 @@ fetch("./setting.json")
             const selectButton = document.getElementById (`select-${producto.id}`);
             selectButton.addEventListener("click", ()=>{
                 agregarAlCarrito(producto.id);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'ADD',
+                    text: 'You have just added an item!',
+                  })
+        
             })//creas la funcion en el boton y al clikear se agrega al carrito
     
             const imgChange = document.getElementById(`move-${producto.id}`);
@@ -45,7 +51,7 @@ const totall = () =>{
     carritoContainer.innerHTML;
     const total = document.createElement("li");
     total.innerHTML = ` 
-    <p>Total: ${totalR}</p>
+    <p>Total: ${totalR} USD</p>
     `;
     carritoContainer.append(total);
 }; 
@@ -69,7 +75,7 @@ const recorridoCarrito = () =>{
          Swal.fire({
             icon: 'error',
             title: 'DELETE',
-            text: 'You have just delete the item!',
+            text: 'You have just deleted the item!',
           })
 
         });
