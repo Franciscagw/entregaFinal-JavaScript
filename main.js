@@ -41,13 +41,13 @@ let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 const carritoContainer = document.getElementById ("carritoHtml");
 
 const totall = () =>{
-    const totalR = carrito.reduce ((accum,item)=>(accum + item.cantidad*item.precio));
+    const totalR = carrito.reduce ((accum,item)=>(accum + item.cantidad*item.precio),  0);
     carritoContainer.innerHTML;
     const total = document.createElement("li");
     total.innerHTML = ` 
     <p>Total: ${totalR}</p>
     `;
-    carritoContainer.append(totall);
+    carritoContainer.append(total);
 }; 
 
 //recorrer el carrito con los itemes agregados y mostrarlo
@@ -66,6 +66,12 @@ const recorridoCarrito = () =>{
         const deleteButton = document.getElementById (`vaciar-${item.id}`);
         deleteButton.addEventListener("click", ()=>{
          eliminarProducto(item);
+         Swal.fire({
+            icon: 'error',
+            title: 'DELETE',
+            text: 'You have just delete the item!',
+          })
+
         });
     });
 
